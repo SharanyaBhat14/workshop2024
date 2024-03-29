@@ -56,7 +56,7 @@ function App() {
       event.preventDefault()
     
 
-  axios.post('http://localhost:5000/api/participant/register',regData).then((res)=>{  
+  axios.post('http://localhost:5173/api/participant/register',regData).then((res)=>{  
 
   toast.success(res.data.message)
     setFormData({ ...initialFormData });
@@ -69,6 +69,35 @@ function App() {
 
 }
 
+
+//Razorpay code begins
+const openRazorpay = async () => {
+  console.log('Submit button clicked');
+  const options = {
+    key: 'rzp_test_jQc2cqe84sxY7h', // Replace with your actual Razorpay key
+    amount: 1000, // Amount in paise (₹10)
+    currency: 'INR',
+    name: 'Corsit',
+    description: 'Workshop Registration',
+    prefill: {
+      name: formData.m1Name,
+      email: formData.m1Email,
+      contact: formData.m1PhoneNumber,
+    },
+    handler: function (response) {
+      // Handle Razorpay success callback
+      console.log('Payment successful:', response);
+      handleSubmit(); // After successful payment, submit the form
+    },
+    theme: {
+      color: '#F37254',
+    },
+  };
+}
+
+  //RAzorpay code ends
+
+
   return (
     <>
     <ToastContainer/>
@@ -78,8 +107,8 @@ function App() {
       <img src="" alt="bot image" />
       {/* image to be added with corsit logo somewhere on the bot */}
         <div className='formdiv' style={{paddingTop:"2rem",paddingBottom:"3rem"}}>
-          <form   className='full-form' onSubmit={handleSubmit}>
-
+          {/* <form   className='full-form' onSubmit={handleSubmit}> */}
+          <form   className='full-form' onSubmit={openRazorpay}>
             <div className='inputdiv'>
               <label htmlFor="teamName" id='teamName'>TEAM NAME</label>
               <input type="text" name="teamName" className='inputbox' value={formData.teamName} onChange={handleChange} required/>
@@ -137,7 +166,12 @@ function App() {
 
             <div className='inputdiv'>
               <button type='submit' className='submitbutton'>{isLoading ?<Spinner/>:"Submit"}</button>
-            </div>
+            </div> 
+
+            {/* <div className='inputdiv'>
+              <button type='button' className='submitbutton' onClick={openRazorpay}>{isLoading ? <Spinner /> : "Submit"}</button>
+            </div> */}
+            
           </form>
         </div>
       </div>

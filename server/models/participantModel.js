@@ -25,27 +25,27 @@ const participantSchema = new mongoose.Schema(
     },
     m2Name: {
         type: String,
-        required: true,
+        // required: true,
     },
     m2PhoneNumber: {
         type: String,
-        required: true,
+        // required: true,
     },
     m3Name: {
         type: String,
-        required: true,
+        // required: true,
     },
     m3PhoneNumber: {
         type: String,
-        required: true,
+        // required: true,
     },
     m4Name: {
         type: String,
-        required: true,
+        // required: true,
     },
     m4PhoneNumber: {
         type: String,
-        required: true,
+        // required: true,
     },
 },
 {

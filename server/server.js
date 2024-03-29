@@ -8,7 +8,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require("path");
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5173;
 
 const connectDb = require("./config/db");
 
