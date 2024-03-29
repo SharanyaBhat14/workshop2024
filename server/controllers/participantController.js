@@ -1,18 +1,24 @@
 const Participant=require("../models/participantModel")
 
 const register = async (req, res) => {
-    const { name, email ,phoneNumber,usn} = req.body;
-    const oldParticipant = await Participant.findOne({ email });
-    if (oldParticipant) {
-    return res.status(401).json({ message: "User already exists !!!" });
-    }
+    const { teamName,m1Name,m1Email,m1PhoneNumber,m1Usn,m2Name,m2PhoneNumber,m3Name,m3PhoneNumber,m4Name,m4PhoneNumber} = req.body;
+    // const oldParticipant = await Participant.findOne({ email });
+    // if (oldParticipant) {
+    // return res.status(401).json({ message: "User already exists !!!" });
+    // }
 
     try {
     const newParticipant = new Participant({
-        name,
-        email,
-        phoneNumber,
-        usn
+        teamName,
+        m1Name,m1Email,
+        m1PhoneNumber,
+        m1Usn,
+        m2Name,
+        m2PhoneNumber,
+        m3Name,
+        m3PhoneNumber,
+        m4Name,
+        m4PhoneNumber
     });
     const student = await newParticipant.save();
     if (student) {
