@@ -36,7 +36,7 @@ function App() {
       event.preventDefault()
     
 
-  axios.post('http://localhost:5173/api/participant/register',regData).then((res)=>{  
+  axios.post('http://localhost:5000/api/participant/register',regData).then((res)=>{  
 
   toast.success(res.data.message)
     setFormData({ ...initialFormData });

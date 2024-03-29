@@ -7,7 +7,7 @@ try {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     });
-    console.log("MONGODB is connected");
+    console.log("MONGODB is connected".underline);
 } catch (error) {
     console.log(error);
     process.exit(1);

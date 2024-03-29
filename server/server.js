@@ -31,7 +31,7 @@ res.sendFile(path.join(__dirname, "../client/index.html"));
 connectDb()
 .then(() => {
     app.listen(port, () =>
-    console.log(`Server is up and running on the port ${port}`)
+    console.log(`Server is up and running on the port ${port}`.underline)
     );
 })
 .catch((err) => console.log(err));
