@@ -54,9 +54,7 @@ function App() {
         m4PhoneNumber:formData.m4PhoneNumber,
       }
       event.preventDefault()
-    
-
-  axios.post('http://localhost:5173/api/participant/register',regData).then((res)=>{  
+    axios.post('http://localhost:5000/api/participant/register',regData).then((res)=>{  
 
   toast.success(res.data.message)
     setFormData({ ...initialFormData });
@@ -71,29 +69,83 @@ function App() {
 
 
 //Razorpay code begins
-const openRazorpay = async () => {
-  console.log('Submit button clicked');
-  const options = {
-    key: 'rzp_test_jQc2cqe84sxY7h', // Replace with your actual Razorpay key
-    amount: 1000, // Amount in paise (₹10)
-    currency: 'INR',
-    name: 'Corsit',
-    description: 'Workshop Registration',
-    prefill: {
-      name: formData.m1Name,
-      email: formData.m1Email,
-      contact: formData.m1PhoneNumber,
-    },
-    handler: function (response) {
-      // Handle Razorpay success callback
-      console.log('Payment successful:', response);
-      handleSubmit(); // After successful payment, submit the form
-    },
-    theme: {
-      color: '#F37254',
-    },
-  };
-}
+
+// const initPay = (data) => {
+//   const options = {
+//     key : "************************",
+//     amount: 1000,
+//     currency: "INR",
+//     name: formData.m1Name,
+//     description: "Test",
+//     order_id: data.id,
+//     handler: async (response) => {
+//       try {
+//         const verifyURL = "https://localhost:8080/api/payment/verify";
+//         const {data} = await axios.post(verifyURL,response);
+//       } catch(error) {
+//         console.log(error);
+//       }
+//     },
+//     theme: {
+//       color: "#3399cc",
+//     },
+//   };
+//   const rzp1 = new window.Razorpay(options);
+//   rzp1.open();
+// };
+
+// const handlePay = async () => {
+//   try {
+//     const orderURL = "https://localhost:5173/api/payment/orders";
+//     const {data} = await axios.post(orderURL,{amount: 1000});
+//     console.log(data);
+//     initPay(data.data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// const openRazorpay = async () => {
+//   try {
+//     const response = await axios.get('http://localhost:5173/api/razorpay/initiate');
+//     const { razorpayOptions } = response.data;
+//     if (!razorpayOptions) {
+//       throw new Error('Invalid Razorpay options');
+//     }
+//     const razorpayInstance = new window.Razorpay(razorpayOptions);
+//     razorpayInstance.open();
+//   } catch (error) {
+//     console.error('Error initializing Razorpay:', error);
+//   }
+// };
+
+// const openRazorpay = async () => {
+//   console.log('Submit button clicked');
+//   const options = {
+//     key: 'rzp_test_jQc2cqe84sxY7h', // Replace with your actual Razorpay key
+//     amount: 1000, // Amount in paise (₹10)
+//     currency: 'INR',
+//     name: 'Corsit',
+//     description: 'Workshop Registration',
+//     prefill: {
+//       name: formData.m1Name,
+//       email: formData.m1Email,
+//       contact: formData.m1PhoneNumber,
+//     },
+//     handler: function (response) {
+//       // Handle Razorpay success callback
+//       console.log('Payment successful:', response);
+//       handleSubmit(); // After successful payment, submit the form
+//     },
+//     theme: {
+//       color: '#F37254',
+//     },
+//   };
+//   const response = await axios.get('http://localhost:5173/api/razorpay/initiate');
+//   const { razorpayOptions } = response.data;
+//   const razorpayInstance = new window.Razorpay(razorpayOptions);
+//   razorpayInstance.open();
+// }
 
   //RAzorpay code ends
 
@@ -107,8 +159,8 @@ const openRazorpay = async () => {
       <img src="" alt="bot image" />
       {/* image to be added with corsit logo somewhere on the bot */}
         <div className='formdiv' style={{paddingTop:"2rem",paddingBottom:"3rem"}}>
-          {/* <form   className='full-form' onSubmit={handleSubmit}> */}
-          <form   className='full-form' onSubmit={openRazorpay}>
+          <form   className='full-form' onSubmit={handleSubmit}>
+          {/* <form   className='full-form' onSubmit={openRazorpay}> */}
             <div className='inputdiv'>
               <label htmlFor="teamName" id='teamName'>TEAM NAME</label>
               <input type="text" name="teamName" className='inputbox' value={formData.teamName} onChange={handleChange} required/>
@@ -169,10 +221,15 @@ const openRazorpay = async () => {
             </div> 
 
             {/* <div className='inputdiv'>
-              <button type='button' className='submitbutton' onClick={openRazorpay}>{isLoading ? <Spinner /> : "Submit"}</button>
+              <button type='button' className='submitbutton' onClick={handlePay}>{isLoading ? <Spinner /> : "Submit"}</button>
             </div> */}
             
           </form>
+
+          {/* <div className='inputdiv'>
+            <button type='button' className='submitbutton' onClick={openRazorpay}>{isLoading ? <Spinner /> : "Pay with Razorpay"}</button>
+          </div> */}
+
         </div>
       </div>
     </>

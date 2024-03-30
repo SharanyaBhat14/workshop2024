@@ -8,7 +8,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require("path");
 
-const port = process.env.PORT || 5173;
+const port = process.env.PORT || 5000;
 
 const connectDb = require("./config/db");
 
@@ -21,6 +21,7 @@ app.use(morgan("dev"));
 app.use(cors());
 
 app.use("/api/participant", require("./routes/participantRoute"));
+// app.use("/api/payment",require("./routes/razorpayRoute"))
 
 
 app.use(express.static(path.join(__dirname, "../client")));
