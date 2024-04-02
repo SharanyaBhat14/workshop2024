@@ -23,11 +23,17 @@ app.use(cors());
 app.use("/api/participant", require("./routes/participantRoute"));
 // app.use("/api/payment",require("./routes/razorpayRoute"))
 
-
+//to run globally add dist
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.get("*", function (req, res) {
 res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
+
+//to run locally remove dist
+// app.use(express.static(path.join(__dirname, "../client")));
+// app.get("*", function (req, res) {
+// res.sendFile(path.join(__dirname, "../client/index.html"));
+// });
 
 connectDb()
 .then(() => {

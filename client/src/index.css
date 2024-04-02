@@ -17,7 +17,8 @@
 
 #root{
   width:"100%";
-  background: linear-gradient(to right, #2f3032,#6a6a70, #f6f9f9);
+  /* background: linear-gradient(to right, #2f3032,#6a6a70, #f6f9f9); */
+  background: linear-gradient(to right, #112D4E,#00ADB5, #3db4c6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,12 +27,23 @@
 .heading{
   padding-top: 2.5rem;
   padding-bottom: 1rem;
-  text-shadow: 3px 4px 3px #0a0c0e;
+  /* text-shadow: 3px 4px 3px #0a0c0e; */
+  text-shadow: 3px 4px 3px #112D4E;
   font-size: 3rem;
   color: #F9F7F7;
   text-align: center;
-
 }
+
+.heading2{
+  /* padding-top: 2.5rem; */
+  padding-bottom: 1rem;
+  /* text-shadow: 3px 4px 3px #0a0c0e; */
+  text-shadow: 3px 4px 3px #112D4E;
+  font-size: 2.5rem;
+  color: #F9F7F7;
+  text-align: center;
+}
+
 .hero{
   width: 60%;
   min-height: 100vh;
@@ -70,9 +82,12 @@ textarea{
   height: 100px;
   padding: .4rem;
   box-sizing: border-box;
-  border: 2px solid  #6a6a70;
+  border: 2px solid  #00ADB5;
   border-radius: 4px;
   background-color: #F9F7F7;
+  /* border: 2px solid  #6a6a70;
+  border-radius: 4px;
+  background-color: #F9F7F7; */
   resize: none;
   font-size: medium;
   margin-top: .5rem;
@@ -101,7 +116,8 @@ label{
 input:-webkit-autofill,input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus{
   -webkit-box-shadow: 0 0 0px 1000px #F9F7F7 inset;
-  -webkit-text-fill-color: #0a0c0e;
+  /* -webkit-text-fill-color: #0a0c0e; */
+  -webkit-text-fill-color: #112D4E;
 
 }
 
@@ -109,7 +125,8 @@ input:-webkit-autofill:focus{
   outline: none;
   border: none;
   /* border-bottom: 2px solid #393E46; */
-  border-bottom: 2px solid #6a6a70;
+  /* border-bottom: 2px solid #6a6a70; */
+  border-bottom: 2px solid #00ADB5;
   width: 100%;
   appearance: none;
   fill: #F9F7F7;
@@ -143,59 +160,7 @@ input[type="checkbox"]{
   margin-right: .5rem;
 }
 
-input[type="range"]{
 
-  width: 100%;
-  margin-top:.7rem;
-}
-input[type="range"] {
-  /* removing default appearance */
-  -webkit-appearance: none;
-  appearance: none; 
-  /* creating a custom design */
-  width: 100%;
-  cursor: pointer;
-  outline: none;
-  /*  slider progress trick  */
-  overflow: hidden;
-  border-radius: 16px;
-}
-/* Track: webkit browsers */
-input[type="range"]::-webkit-slider-runnable-track {
-  height: 15px;
-  background: #ccc;
-  border-radius: 16px;
-}
-/* Track: Mozilla Firefox */
-input[type="range"]::-moz-range-track {
-  height: 15px;
-  background: #ccc;
-  border-radius: 16px;
-}
-/* Thumb: webkit */
-input[type="range"]::-webkit-slider-thumb {
-  /* removing default appearance */
-  -webkit-appearance: none;
-  appearance: none; 
-  /* creating a custom design */
-  height: 15px;
-  width: 15px;
-  background-color: #fff;
-  border-radius: 50%;
-  border: 2px solid #393E46;
-  /*  slider progress trick  */
-  box-shadow: -407px 0 0 400px #393E46;
-}
-/* Thumb: Firefox */
-input[type="range"]::-moz-range-thumb {
-  height: 15px;
-  width: 15px;
-  background-color: #fff;
-  border-radius: 50%;
-  border: 1px solid #393E46;
-  /*  slider progress trick  */
-  box-shadow: -407px 0 0 400px #393E46;
-}
 
 .submitbutton{
   padding: .6rem;
@@ -211,6 +176,11 @@ input[type="range"]::-moz-range-thumb {
 }
 .submitbutton:hover{
   border-color:#393E46 ;
+}
+
+
+.robotimg{
+  height: 26rem;
 }
 
 @media screen and (max-width:600px) {
@@ -230,4 +200,74 @@ input[type="range"]::-moz-range-thumb {
   .inputdiv{
     width: 100%;
   }
+  .robotimg{
+    height: 18rem;
+  }
 }
+
+p{
+  color: rgb(246, 238, 238);
+  font-size: larger;
+}
+
+p b{
+  color: rgb(246, 238, 238);
+}
+
+
+
+
+
+
+.imageqr{
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+}
+.qrjpg{
+
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  
+}
+h5{
+  text-align: center;
+}
+
+
+.upidiv{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 300px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inp_text
+{
+  text-align: center;
+}
+
+.CopyBtn{
+background-color: #112D4E;
+color: #ffff;
+border-radius: 20px;
+padding: 5px;
+}
+
+
+
+
+

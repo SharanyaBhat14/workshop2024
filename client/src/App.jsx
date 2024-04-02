@@ -3,6 +3,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
 import Spinner from "./components/Spinner"
+import CopyableText from './components/payment'
 
 function App() {
   const initialFormData={
@@ -57,7 +58,9 @@ function App() {
         transactionid:formData.transactionid,
       }
       event.preventDefault()
+      //to run locally
     // axios.post('http://localhost:5000/api/participant/register',regData).then((res)=>{  
+      //to run on deployment
       axios.post('/api/participant/register',regData).then((res)=>{  
 
   toast.success(res.data.message)
@@ -159,9 +162,10 @@ function App() {
     <ToastContainer/>
     <div className='hero'>
       <h4 className='heading'>CLUB OF ROBOTICS</h4>
-      <h5 className='heading'>Workshop 2024</h5>
-      <img src="" alt="bot image" />
-      {/* image to be added with corsit logo somewhere on the bot */}
+      <h5 className='heading2'>Workshop 2024</h5>
+      <p><b>Date: </b>13 & 14,April 2024</p>
+      <p><b>Venue: </b>Tel Seminar Hall</p>
+      <img className='robotimg' src="/imgs/robo1.png" alt="bot image" />
         <div className='formdiv' style={{paddingTop:"2rem",paddingBottom:"3rem"}}>
           <form   className='full-form' onSubmit={handleSubmit}>
           {/* <form   className='full-form' onSubmit={openRazorpay}> */}
@@ -220,10 +224,16 @@ function App() {
               <input type="tel" name="m4PhoneNumber" className='inputbox' value={formData.m4PhoneNumber} onChange={handleChange} required/>
             </div>
 
-            <div>
+            {/* <div>
               <p>Scan the qr and make Payment</p>
               <img src="" alt="payment qr image" />
-            </div>
+            </div> */}
+
+            <div className="qrjpg">
+              <h5>PAY INR <b><i>1600</i></b> HERE</h5>
+              <img className="imageqr" src="/imgs/qrcode.jpeg" alt="qr code" />
+              <CopyableText text="corsit@axl" />
+          </div>
 
             <div className='inputdiv'>
               <label htmlFor="transactionid" id='transactionid'>TRANSACTION ID</label>
