@@ -13,7 +13,7 @@ const participantSchema = new mongoose.Schema(
     m1Email: {
         type: String,
         required: true,
-        unique: true,
+        // unique: true,
     },
     m1PhoneNumber:{
         type:String,
@@ -47,6 +47,10 @@ const participantSchema = new mongoose.Schema(
         type: String,
         required: true,
     },
+    transactionid: {
+        type: String,
+        required: true,
+    }
 },
 {
     timestamps: true,

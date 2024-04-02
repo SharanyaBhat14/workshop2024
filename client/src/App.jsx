@@ -17,6 +17,7 @@ function App() {
       m3PhoneNumber:'',
       m4Name:'',
       m4PhoneNumber:'',
+      transactionid:'',
   }
 
     const[formData,setFormData]=useState({
@@ -31,6 +32,7 @@ function App() {
       m3PhoneNumber:'',
       m4Name:'',
       m4PhoneNumber:'',
+      transactionid:'',
     })
 
     const handleChange=(event)=>{
@@ -52,6 +54,7 @@ function App() {
         m3PhoneNumber:formData.m3PhoneNumber,
         m4Name:formData.m4Name,
         m4PhoneNumber:formData.m4PhoneNumber,
+        transactionid:formData.transactionid,
       }
       event.preventDefault()
     axios.post('http://localhost:5000/api/participant/register',regData).then((res)=>{  
@@ -173,7 +176,7 @@ function App() {
 
             <div className='inputdiv'>
               <label htmlFor="m1Email" id='m1Email'>MEMBER1 EMAIL</label>
-              <input type="mail" name="m1Email" className='inputbox' value={formData.m1Email} onChange={handleChange} required/>
+              <input type="email" name="m1Email" className='inputbox' value={formData.m1Email} onChange={handleChange} required/>
             </div>
             
             <div className='inputdiv'>
@@ -214,6 +217,16 @@ function App() {
             <div className='inputdiv'>
               <label htmlFor="m4PhoneNumber" id='m4PhoneNumber'>MEMBER4 PHONE NUMBER</label>
               <input type="tel" name="m4PhoneNumber" className='inputbox' value={formData.m4PhoneNumber} onChange={handleChange} required/>
+            </div>
+
+            <div>
+              <p>Scan the qr and make Payment</p>
+              <img src="" alt="payment qr image" />
+            </div>
+
+            <div className='inputdiv'>
+              <label htmlFor="transactionid" id='transactionid'>TRANSACTION ID</label>
+              <input type="text" name="transactionid" className='inputbox' value={formData.transactionid} onChange={handleChange} required/>
             </div>
 
             <div className='inputdiv'>
