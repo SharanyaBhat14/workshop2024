@@ -24,9 +24,9 @@ app.use("/api/participant", require("./routes/participantRoute"));
 // app.use("/api/payment",require("./routes/razorpayRoute"))
 
 
-app.use(express.static(path.join(__dirname, "../client")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 app.get("*", function (req, res) {
-res.sendFile(path.join(__dirname, "../client/index.html"));
+res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 connectDb()
