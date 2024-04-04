@@ -10,7 +10,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   color: #393E46;
-  font-family: "merriweather","Sora", sans-serif;
+  font-family:"Sora", sans-serif;
   font-weight: bold;
   accent-color:#393E46 ;
 }
@@ -180,7 +180,7 @@ input[type="checkbox"]{
 
 
 .robotimg{
-  height: 26rem;
+  height: 20rem;
 }
 
 @media screen and (max-width:600px) {
@@ -201,7 +201,7 @@ input[type="checkbox"]{
     width: 100%;
   }
   .robotimg{
-    height: 18rem;
+    height: 16rem;
   }
 }
 

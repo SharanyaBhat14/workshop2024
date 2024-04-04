@@ -44,20 +44,40 @@ function App() {
     const handleSubmit=(event)=>{
       setLoading(true);
       const regData={
-        teamName:formData.teamName,
-        m1Name:formData.m1Name,
-        m1Email:formData.m1Email,
-        m1PhoneNumber:formData.m1PhoneNumber,
-        m1Usn:formData.m1Usn,
-        m2Name:formData.m2Name,
-        m2PhoneNumber:formData.m2PhoneNumber,
-        m3Name:formData.m3Name,
-        m3PhoneNumber:formData.m3PhoneNumber,
-        m4Name:formData.m4Name,
-        m4PhoneNumber:formData.m4PhoneNumber,
-        transactionid:formData.transactionid,
+        teamName:formData.teamName.trim(),
+        m1Name:formData.m1Name.trim(),
+        m1Email:formData.m1Email.trim(),
+        m1PhoneNumber:formData.m1PhoneNumber.trim(),
+        m1Usn:formData.m1Usn.trim(),
+        m2Name:formData.m2Name.trim(),
+        m2PhoneNumber:formData.m2PhoneNumber.trim(),
+        m3Name:formData.m3Name.trim(),
+        m3PhoneNumber:formData.m3PhoneNumber.trim(),
+        m4Name:formData.m4Name.trim(),
+        m4PhoneNumber:formData.m4PhoneNumber.trim(),
+        transactionid:formData.transactionid.trim(),
       }
       event.preventDefault()
+
+      // // Check if the object is empty
+      // if (Object.values(regData).some(value => value === '')) {
+      //   toast.error("Fields can't be null")
+      //   setLoading(false);
+      //   return;
+      // } 
+
+      // Check for empty fields
+      const emptyFields = Object.entries(regData)
+      .filter(([key, value]) => value === '')
+      .map(([key, value]) => key);
+
+      if (emptyFields.length > 0) {
+        const errorMessage = `${emptyFields.join(', ')} cannot be empty`;
+        toast.error(errorMessage);
+        setLoading(false);
+        return;
+      }
+
       //to run locally
     // axios.post('http://localhost:5000/api/participant/register',regData).then((res)=>{  
       //to run on deployment
@@ -164,7 +184,7 @@ function App() {
       <h4 className='heading'>CLUB OF ROBOTICS</h4>
       <h5 className='heading2'>Workshop 2024</h5>
       <p><b>Date: </b>13 & 14,April 2024</p>
-      <p><b>Venue: </b>Tel Seminar Hall</p>
+      <p><b>Venue: </b>TEL Seminar Hall</p>
       <img className='robotimg' src="/imgs/robo1.png" alt="bot image" />
         <div className='formdiv' style={{paddingTop:"2rem",paddingBottom:"3rem"}}>
           <form   className='full-form' onSubmit={handleSubmit}>
@@ -186,12 +206,12 @@ function App() {
             
             <div className='inputdiv'>
               <label htmlFor="m1PhoneNumber" id='m1PhoneNumber'>MEMBER1 PHONE NUMBER</label>
-              <input type="tel" name="m1PhoneNumber" className='inputbox' value={formData.m1PhoneNumber} onChange={handleChange} required/>
+              <input type="tel" name="m1PhoneNumber" className='inputbox' pattern="^(\+91[\-\s]?)?[0]?(91)?[6789]\d{9}$" title='It should contain 10 digits e.g.9999999999' value={formData.m1PhoneNumber} onChange={handleChange} required/>
             </div>
             
             <div className='inputdiv'>
               <label htmlFor="m1Usn" id='m1Usn'>MEMBER1 USN</label>
-              <input type="text" name="m1Usn" className='inputbox' value={formData.m1Usn} onChange={handleChange} required/>
+              <input type="text" name="m1Usn" className='inputbox' minLength={10} maxLength={10} title="Format: 1siyyddnnn e.g.1si25cs001,1SI25CS001" value={formData.m1Usn} onChange={handleChange} required/>
             </div>
 
             <div className='inputdiv'>
@@ -201,7 +221,7 @@ function App() {
 
             <div className='inputdiv'>
               <label htmlFor="m2PhoneNumber" id='m2PhoneNumber'>MEMBER2 PHONE NUMBER</label>
-              <input type="tel" name="m2PhoneNumber" className='inputbox' value={formData.m2PhoneNumber} onChange={handleChange} required/>
+              <input type="tel" name="m2PhoneNumber" className='inputbox' pattern="^(\+91[\-\s]?)?[0]?(91)?[6789]\d{9}$" title='It should contain 10 digits e.g.9999999999' value={formData.m2PhoneNumber} onChange={handleChange} required/>
             </div>
 
             <div className='inputdiv'>
@@ -211,7 +231,7 @@ function App() {
 
             <div className='inputdiv'>
               <label htmlFor="m3PhoneNumber" id='m3PhoneNumber'>MEMBER3 PHONE NUMBER</label>
-              <input type="tel" name="m3PhoneNumber" className='inputbox' value={formData.m3PhoneNumber} onChange={handleChange} required/>
+              <input type="tel" name="m3PhoneNumber" className='inputbox' pattern="^(\+91[\-\s]?)?[0]?(91)?[6789]\d{9}$" title='It should contain 10 digits e.g.9999999999' value={formData.m3PhoneNumber} onChange={handleChange} required/>
             </div>
 
             <div className='inputdiv'>
@@ -221,7 +241,7 @@ function App() {
 
             <div className='inputdiv'>
               <label htmlFor="m4PhoneNumber" id='m4PhoneNumber'>MEMBER4 PHONE NUMBER</label>
-              <input type="tel" name="m4PhoneNumber" className='inputbox' value={formData.m4PhoneNumber} onChange={handleChange} required/>
+              <input type="tel" name="m4PhoneNumber" className='inputbox' pattern="^(\+91[\-\s]?)?[0]?(91)?[6789]\d{9}$" title='It should contain 10 digits e.g.9999999999' value={formData.m4PhoneNumber} onChange={handleChange} required/>
             </div>
 
             {/* <div>

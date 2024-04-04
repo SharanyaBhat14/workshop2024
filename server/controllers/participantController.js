@@ -1,7 +1,8 @@
 const Participant=require("../models/participantModel")
 
 const register = async (req, res) => {
-    const { teamName,m1Name,m1Email,m1PhoneNumber,m1Usn,m2Name,m2PhoneNumber,m3Name,m3PhoneNumber,m4Name,m4PhoneNumber,transactionid} = req.body;
+    const {teamName,m1Name,m1Email,m1PhoneNumber,m1Usn,m2Name,m2PhoneNumber,m3Name,m3PhoneNumber,m4Name,m4PhoneNumber,transactionid} = req.body;
+
     const oldParticipant = await Participant.findOne({transactionid: transactionid });
     if (oldParticipant) {
     return res.status(401).json({ message: "Already registered !!!" });
