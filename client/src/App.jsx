@@ -179,7 +179,20 @@ function App() {
 
   return (
     <>
-    <ToastContainer/>
+    {/* <div style="display: flex; items-align: center; justify-content: center; min-height: 100vh; background-color: #808080; color: white;">
+  <div style="text-align: center;">
+    <img src="/imgs/robo1.png" alt="Robot" style="width: 60px;" />
+    <p style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem;">Oops!!<br />Page not found</p>
+  </div>
+</div> */}
+
+      <div style={{minHeight:"100vh",display:"flex",justifyContent:"center",alignContent:"center" ,flexDirection:"column"}}>
+        <img src="/imgs/robo1.png" alt="robo img" style={{height:"40vh"}}/>
+        <br />
+        <h2 style={{fontWeight:"bolder",display:"flex" ,textAlign:"center"}}>OOps!!<br/> Page Not Found</h2>
+      </div>
+
+    {/* <ToastContainer/>
     <div className='hero'>
       <h4 className='heading'>CLUB OF ROBOTICS</h4>
       <h5 className='heading2'>Workshop 2024</h5>
@@ -188,7 +201,6 @@ function App() {
       <img className='robotimg' src="/imgs/robo1.png" alt="bot image" />
         <div className='formdiv' style={{paddingTop:"2rem",paddingBottom:"3rem"}}>
           <form   className='full-form' onSubmit={handleSubmit}>
-          {/* <form   className='full-form' onSubmit={openRazorpay}> */}
             <div className='inputdiv'>
               <label htmlFor="teamName" id='teamName'>TEAM NAME</label>
               <input type="text" name="teamName" className='inputbox' value={formData.teamName} onChange={handleChange} required/>
@@ -244,10 +256,6 @@ function App() {
               <input type="tel" name="m4PhoneNumber" className='inputbox' pattern="^(\+91[\-\s]?)?[0]?(91)?[6789]\d{9}$" title='It should contain 10 digits e.g.9999999999' value={formData.m4PhoneNumber} onChange={handleChange} required/>
             </div>
 
-            {/* <div>
-              <p>Scan the qr and make Payment</p>
-              <img src="" alt="payment qr image" />
-            </div> */}
 
             <div className="qrjpg">
               <h5>PAY INR <b><i>1600</i></b> HERE</h5>
@@ -264,18 +272,12 @@ function App() {
               <button type='submit' className='submitbutton'>{isLoading ?<Spinner/>:"Submit"}</button>
             </div> 
 
-            {/* <div className='inputdiv'>
-              <button type='button' className='submitbutton' onClick={handlePay}>{isLoading ? <Spinner /> : "Submit"}</button>
-            </div> */}
             
           </form>
 
-          {/* <div className='inputdiv'>
-            <button type='button' className='submitbutton' onClick={openRazorpay}>{isLoading ? <Spinner /> : "Pay with Razorpay"}</button>
-          </div> */}
 
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
